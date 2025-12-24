@@ -1,0 +1,21 @@
+node_modules/
+out/
+*.vsix
+.vscode-test/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.env
+
+# IDE
+.idea/
+*.swp
+*.swo
+.DS_Store

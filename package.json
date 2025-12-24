@@ -1,0 +1,102 @@
+{
+  "name": "model-viz",
+  "displayName": "Model Viz",
+  "description": "AI-powered experiment tracking and visualization for ML research",
+  "version": "0.1.0",
+  "publisher": "viz",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Machine Learning",
+    "Visualization",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "modelviz.openPanel",
+        "title": "Model Viz: Open Panel"
+      },
+      {
+        "command": "modelviz.startServer",
+        "title": "Model Viz: Start Server"
+      },
+      {
+        "command": "modelviz.askAI",
+        "title": "Model Viz: Ask AI About Experiment"
+      },
+      {
+        "command": "modelviz.generateIdeas",
+        "title": "Model Viz: Generate Investigation Ideas"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "modelviz",
+          "title": "Model Viz",
+          "icon": "$(graph)"
+        }
+      ]
+    },
+    "views": {
+      "modelviz": [
+        {
+          "id": "modelviz.experiments",
+          "name": "Experiments"
+        },
+        {
+          "id": "modelviz.visualizations",
+          "name": "Visualizations"
+        },
+        {
+          "id": "modelviz.ideas",
+          "name": "AI Ideas"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Model Viz",
+      "properties": {
+        "modelviz.serverPort": {
+          "type": "number",
+          "default": 5678,
+          "description": "Port for the visualization server"
+        },
+        "modelviz.aiModel": {
+          "type": "string",
+          "default": "claude-sonnet-4-20250514",
+          "description": "AI model to use for ideation"
+        },
+        "modelviz.autoGenerateIdeas": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically generate ideas when anomalies are detected"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@types/ws": "^8.5.10",
+    "typescript": "^5.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.55.0"
+  },
+  "dependencies": {
+    "ws": "^8.14.2"
+  }
+}

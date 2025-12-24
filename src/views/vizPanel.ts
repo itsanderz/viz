@@ -498,12 +498,12 @@ export class VizPanel {
 
       grid.innerHTML = visualizations.map(viz => {
         if (viz.type === 'image') {
-          return '<div class="viz-item" onclick="showViz(\\'${viz.id}\\')">' +
-            '<img src="data:image/png;base64,${viz.data}">' +
-            '<div class="label">${viz.name} (step ${viz.step})</div>' +
+          return '<div class="viz-item" onclick="showViz(\\'' + viz.id + '\\')">' +
+            '<img src="data:image/png;base64,' + viz.data + '">' +
+            '<div class="label">' + viz.name + ' (step ' + viz.step + ')</div>' +
           '</div>';
         }
-        return '<div class="viz-item"><div class="label">${viz.name}</div></div>';
+        return '<div class="viz-item"><div class="label">' + viz.name + '</div></div>';
       }).join('');
     }
 
@@ -534,8 +534,8 @@ export class VizPanel {
           '<div class="meta">' +
             '<span>' + new Date(idea.timestamp).toLocaleTimeString() + '</span>' +
             '<div class="idea-actions">' +
-              '<button onclick="rateIdea(\\'${idea.id}\\', \\'good\\')">👍</button>' +
-              '<button onclick="rateIdea(\\'${idea.id}\\', \\'bad\\')">👎</button>' +
+              '<button onclick="rateIdea(\\'' + idea.id + '\\', \\'good\\')">👍</button>' +
+              '<button onclick="rateIdea(\\'' + idea.id + '\\', \\'bad\\')">👎</button>' +
             '</div>' +
           '</div>' +
         '</div>'

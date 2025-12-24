@@ -106,13 +106,15 @@ export function activate(context: vscode.ExtensionContext) {
       });
 
       // Wire up idea generator events
-      ideaGenerator.onIdea((idea) => {
-        const panel = VizPanel.currentPanel;
-        if (panel) {
-          panel.addIdea(idea);
-        }
-        ideasProvider.addIdea(idea);
-      });
+      if (ideaGenerator) {
+        ideaGenerator.onIdea((idea) => {
+          const panel = VizPanel.currentPanel;
+          if (panel) {
+            panel.addIdea(idea);
+          }
+          ideasProvider.addIdea(idea);
+        });
+      }
 
     } catch (e) {
       vscode.window.showErrorMessage(`Failed to start Model Viz server: ${e}`);
